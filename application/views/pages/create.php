@@ -30,7 +30,9 @@
     <div class="row">
       <!-- Blog Entries Column -->
       <div class="col-md-8 mt-5">
-
+<div>
+<?php  validation_errors(); ?>
+</div>
  <form enctype="multipart/form-data" method='post' action="/create" >
 
   <div class="form-row">
@@ -38,7 +40,8 @@
       <label for="inputEmail4">Blog title</label>
       <input type="text" value='<?php echo set_value('blog_title');?>' name="blog_title" class="form-control" id="validationCustom03"  >
     </div>
-    <small style="color:red;"><?php echo form_error('blog_title'); ?> </small>
+    <div class="col-md-6 mt-5">
+    <small class='p_validate' style="color:red;"><?php echo form_error('blog_title'); ?> </small> </div>
   </div>
   <div class="form-group"> 
 <?php     
@@ -53,11 +56,15 @@
 
     <label for="inputAddress">Blog Description</label>
     <?= form_textarea($options); ?>
-    <small style="color:red;"><?php echo form_error('blogtextarea'); ?> </small>
+    <small style="color:red;"><?php echo form_error('blogtextarea');
+    ?> </small>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="exampleFormControlFile1">Image for Uploading</label>
+      <small style="color:red;"><?php echo form_error('profile_image');
+    ?> </small>
+
       <input id="imgInp" type="file" name='profile_image' onchange="readURL(this)" class="form-control-file" >
     </div>
     <div class="form-group col-md-6">
@@ -70,7 +77,6 @@
     </div>
   </div>
  
-
   <button  type="submit" class="btn btn-primary">Create Post</button>
 </form>
 
